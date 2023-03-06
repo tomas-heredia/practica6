@@ -1,0 +1,36 @@
+@model ViewModels.P_ModificarViewModel
+
+@{
+    ViewData["Title"] = "Producto Page";
+}
+
+<div >
+    <form asp-controller="Producto" asp-action= "Actualizar" method="post">
+
+        <legend>"Modificar Producto"</legend>
+        
+        <div class="form-group">
+            <label asp-for="@Model.descripcion" class="control-label"></label>
+            <input asp-for="@Model.descripcion" class="form-control">
+            <span asp-validation-for="@Model.descripcion" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.precio" class="control-label"></label>
+            <input asp-for="@Model.precio" class="form-control">
+            <span asp-validation-for="@Model.precio" class="text-danger"></span>
+        </div>
+        
+         
+        <div class="form-group">
+             <input type="number" value=@Model.id name="id" hidden>
+            <input class="btn btn-primary" type="submit" value="Guardar" class="btn btn-info" />
+        </div>
+        
+    </form>
+    <form asp-controller="Producto" asp-action= "AHome" method="post">
+        
+        <input  class="btn btn-danger" type="submit" value="Home">
+            
+    </form>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

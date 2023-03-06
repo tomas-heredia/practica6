@@ -1,0 +1,52 @@
+@model List<ViewModels.P_ListarViewModel> 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Activo</th>
+      <th scope="col">Borrar</th>
+      <th scope="col">Modificar</th>
+    </tr>
+  </thead>
+@foreach (var item in Model)
+{
+  <tbody>
+    <tr>
+      <th scope="row">@item.id</th>
+      <td>@item.descripcion</td>
+      <td>@item.precio</td>
+
+      @if (item.activo )
+      {
+        <td>Activo</td>
+      }else
+      {
+        <td>Inactivo</td>
+      }
+      <td>
+        <form asp-controller="Producto" asp-action= "bajaProducto" method="post">
+            <input type="number" value=@item.id name="id" hidden>
+            <input  class="btn btn-danger" type="submit" value="Eliminar">
+            
+        </form>
+      </td>
+      <td>
+        <form asp-controller="Producto" asp-action= "ModificarProducto" method="post">
+            <input type="number" value=@item.id name="id" hidden>
+            <input  class="btn btn-danger" type="submit" value="Modificar">
+            
+        </form>
+      </td>
+    </tr>
+   
+  </tbody>
+    
+}
+</table>
+<form asp-controller="Producto" asp-action= "AHome" method="post">
+        
+        <input  class="btn btn-danger" type="submit" value="Home">
+            
+    </form>

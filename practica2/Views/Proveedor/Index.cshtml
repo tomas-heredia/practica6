@@ -1,0 +1,31 @@
+@model ViewModels.Pr_IndexViewModel
+
+@{
+    ViewData["Title"] = "Proveedor Page";
+}
+
+<div>
+     <form asp-controller="Proveedor" asp-action= "addProveedor" method="post">
+        <legend>"Registrar Proveedor"</legend>
+        <div class="form-group">
+            <label asp-for="nombre" class="control-label"></label>
+            <input asp-for="nombre" class="form-control">
+            <span asp-validation-for="nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="fechaAlta" class="control-label"></label>
+            <input asp-for="fechaAlta" class="form-control">
+            <span asp-validation-for="fechaAlta" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Guardar" class="btn btn-info" />
+        </div>
+    </form>
+    <form asp-controller="Proveedor" asp-action= "AHome" method="post">
+        
+        <input  class="btn btn-danger" type="submit" value="Home">
+            
+    </form>
+</div>
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }
