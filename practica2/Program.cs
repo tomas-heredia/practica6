@@ -1,10 +1,15 @@
 using Repo;
-using AutoMapper;
+
+using NLog;
+using NLog.Web;
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+
+// Logger de NLog. Trabajando con inyección de dependencia.
+var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 //para automapper
 builder.Services.AddAutoMapper(typeof(Program));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,6 +28,11 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+// NLog: Inyección de dependencia
+builder.Logging.ClearProviders();
+builder.Host.UseNLog();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

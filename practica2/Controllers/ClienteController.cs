@@ -1,14 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using NLog;
+
 using practica2.Models;
-using System;
-using System.Collections.Generic;
+
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Modelos;
 using ViewModels;
-using Mappers;
+
 using Repo;
 using AutoMapper;
 // Para session
